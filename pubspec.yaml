@@ -1,4 +1,4 @@
-name: flutter_wrap_architecture
+name: sapar
 description: A new Flutter project.
 publish_to: 'none'
 version: 0.1.0
@@ -60,3 +60,5 @@ flutter:
 
   assets:
     - assets/icons/
+    - assets/png/
+    - assets/svg/

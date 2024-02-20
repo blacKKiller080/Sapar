@@ -1,7 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_wrap_architecture/src/core/extension/extensions.dart';
+import 'package:sapar/src/core/extension/extensions.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 const NOT_FOUND_IMAGE =

@@ -4,8 +4,8 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-import 'package:flutter_wrap_architecture/src/core/network/interfaces/base_client_generator.dart';
-import 'package:flutter_wrap_architecture/src/core/network/network_options/network_options.dart';
+import 'package:sapar/src/core/network/interfaces/base_client_generator.dart';
+import 'package:sapar/src/core/network/network_options/network_options.dart';
 
 class NetworkCreator {
   /// Call `fetch` with given options

@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart';
-import 'package:flutter_wrap_architecture/src/core/database/drift/connection/open_connection_stub.dart'
-    if (dart.library.io) 'package:flutter_wrap_architecture/src/core/database/drift/connection/open_connection_io.dart'
-    if (dart.library.html) 'package:flutter_wrap_architecture/src/core/database/drift/connection/open_connection_web.dart'
+import 'package:sapar/src/core/database/drift/connection/open_connection_stub.dart'
+    if (dart.library.io) 'package:sapar/src/core/database/drift/connection/open_connection_io.dart'
+    if (dart.library.html) 'package:sapar/src/core/database/drift/connection/open_connection_web.dart'
     as connection;
 
 part 'app_database.g.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter_wrap_architecture/src/core/database/shared_preferences/typed_preferences_dao.dart';
+import 'package:sapar/src/core/database/shared_preferences/typed_preferences_dao.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class IAuthDao {

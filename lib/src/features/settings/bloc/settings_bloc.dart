@@ -1,5 +1,5 @@
-import 'package:flutter_wrap_architecture/src/features/settings/model/settings_data.dart';
-import 'package:flutter_wrap_architecture/src/features/settings/repository/settings_repository.dart';
+import 'package:sapar/src/features/settings/model/settings_data.dart';
+import 'package:sapar/src/features/settings/repository/settings_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:stream_bloc/stream_bloc.dart';

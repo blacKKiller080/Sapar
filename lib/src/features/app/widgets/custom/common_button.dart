@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable, use_key_in_widget_constructors, unused_local_variable
 
 import 'package:flutter/material.dart';
-import 'package:flutter_wrap_architecture/src/core/resources/resources.dart';
+import 'package:sapar/src/core/resources/resources.dart';
 
 class CommonButton extends StatelessWidget {
   Widget child;

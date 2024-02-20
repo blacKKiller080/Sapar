@@ -5,10 +5,10 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter_wrap_architecture/src/core/enum/environment.dart';
-import 'package:flutter_wrap_architecture/src/features/app/logic/not_auth_logic.dart';
-import 'package:flutter_wrap_architecture/src/features/auth/database/auth_dao.dart';
-import 'package:flutter_wrap_architecture/src/features/settings/database/settings_dao.dart';
+import 'package:sapar/src/core/enum/environment.dart';
+import 'package:sapar/src/features/app/logic/not_auth_logic.dart';
+import 'package:sapar/src/features/auth/database/auth_dao.dart';
+import 'package:sapar/src/features/settings/database/settings_dao.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 

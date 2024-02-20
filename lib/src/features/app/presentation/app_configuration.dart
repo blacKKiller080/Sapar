@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_wrap_architecture/src/core/gen/l10n/app_localizations.g.dart';
-import 'package:flutter_wrap_architecture/src/core/resources/resources.dart';
-import 'package:flutter_wrap_architecture/src/features/app/presentation/app_router_builder.dart';
-import 'package:flutter_wrap_architecture/src/features/app/router/app_router.dart';
-import 'package:flutter_wrap_architecture/src/features/settings/widget/scope/settings_scope.dart';
+import 'package:sapar/src/core/gen/l10n/app_localizations.g.dart';
+import 'package:sapar/src/core/resources/resources.dart';
+import 'package:sapar/src/features/app/presentation/app_router_builder.dart';
+import 'package:sapar/src/features/app/router/app_router.dart';
+import 'package:sapar/src/features/settings/widget/scope/settings_scope.dart';
 
 class AppConfiguration extends StatelessWidget {
   const AppConfiguration({

@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter_wrap_architecture/src/features/app/presentation/launcher.dart';
-import 'package:flutter_wrap_architecture/src/features/client/fourth_page/fourth_page.dart';
-import 'package:flutter_wrap_architecture/src/features/client/main_page/main_page.dart';
-import 'package:flutter_wrap_architecture/src/features/client/second_page/second_page.dart';
-import 'package:flutter_wrap_architecture/src/features/client/third_page/third_page.dart';
+import 'package:sapar/src/features/app/presentation/launcher.dart';
+import 'package:sapar/src/features/client/fourth_page/fourth_page.dart';
+import 'package:sapar/src/features/client/main_page/main_page.dart';
+import 'package:sapar/src/features/client/second_page/second_page.dart';
+import 'package:sapar/src/features/client/third_page/third_page.dart';
 
 part 'app_router.gr.dart';
 

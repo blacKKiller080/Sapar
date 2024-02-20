@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_wrap_architecture/src/core/resources/resources.dart';
+import 'package:sapar/src/core/resources/resources.dart';
 
 // ignore: must_be_immutable
 class CustomCheckbox extends StatelessWidget {

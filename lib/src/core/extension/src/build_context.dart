@@ -1,17 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_wrap_architecture/src/core/database/drift/app_database.dart';
-import 'package:flutter_wrap_architecture/src/core/gen/l10n/app_localizations.g.dart';
-import 'package:flutter_wrap_architecture/src/core/model/dependencies_storage.dart';
-import 'package:flutter_wrap_architecture/src/core/model/repository_storage.dart';
-import 'package:flutter_wrap_architecture/src/core/utils/screen_util.dart';
-import 'package:flutter_wrap_architecture/src/core/widget/dependencies_scope.dart';
-import 'package:flutter_wrap_architecture/src/core/widget/repository_scope.dart';
-import 'package:flutter_wrap_architecture/src/features/app/bloc/app_bloc.dart';
 // ignore: depend_on_referenced_packages
 
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:sapar/src/core/database/drift/app_database.dart';
+import 'package:sapar/src/core/gen/l10n/app_localizations.g.dart';
+import 'package:sapar/src/core/model/dependencies_storage.dart';
+import 'package:sapar/src/core/model/repository_storage.dart';
+import 'package:sapar/src/core/utils/screen_util.dart';
+import 'package:sapar/src/core/widget/dependencies_scope.dart';
+import 'package:sapar/src/core/widget/repository_scope.dart';
+import 'package:sapar/src/features/app/bloc/app_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 extension BuildContextX on BuildContext {

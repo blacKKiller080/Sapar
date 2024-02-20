@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_wrap_architecture/src/core/extension/extensions.dart';
-import 'package:flutter_wrap_architecture/src/core/widget/bloc_scope.dart';
-import 'package:flutter_wrap_architecture/src/features/app/bloc/app_bloc.dart';
-import 'package:flutter_wrap_architecture/src/features/app/enum/app_language.dart';
-import 'package:flutter_wrap_architecture/src/features/settings/bloc/settings_bloc.dart';
-import 'package:flutter_wrap_architecture/src/features/settings/enum/app_theme.dart';
+import 'package:sapar/src/core/extension/extensions.dart';
+import 'package:sapar/src/core/widget/bloc_scope.dart';
+import 'package:sapar/src/features/app/bloc/app_bloc.dart';
+import 'package:sapar/src/features/app/enum/app_language.dart';
+import 'package:sapar/src/features/settings/bloc/settings_bloc.dart';
+import 'package:sapar/src/features/settings/enum/app_theme.dart';
 import 'package:provider/provider.dart';
 import 'package:pure/pure.dart';
 

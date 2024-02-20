@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wrap_architecture/src/core/resources/resources.dart';
+import 'package:sapar/src/core/resources/resources.dart';
 
 class NotAuthPage extends StatelessWidget {
   const NotAuthPage({super.key});

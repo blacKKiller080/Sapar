@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:flutter_wrap_architecture/src/core/network/interfaces/base_model.dart';
+import 'package:sapar/src/core/network/interfaces/base_model.dart';
 
 part 'basic_response.g.dart';
 

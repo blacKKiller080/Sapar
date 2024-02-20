@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wrap_architecture/src/core/extension/extensions.dart';
-import 'package:flutter_wrap_architecture/src/core/resources/resources.dart';
-import 'package:flutter_wrap_architecture/src/features/app/router/app_router.dart';
-import 'package:flutter_wrap_architecture/src/features/app/widgets/custom/custom_tab_bar_widget.dart';
+import 'package:sapar/src/core/extension/extensions.dart';
+import 'package:sapar/src/core/resources/resources.dart';
+import 'package:sapar/src/features/app/router/app_router.dart';
+import 'package:sapar/src/features/app/widgets/custom/custom_tab_bar_widget.dart';
 
 // ignore: unused_element
 const _tag = 'Base';

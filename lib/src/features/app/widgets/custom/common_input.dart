@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_wrap_architecture/src/core/resources/resources.dart';
+import 'package:sapar/src/core/resources/resources.dart';
 
 class CommonInput extends StatefulWidget {
   final String text;

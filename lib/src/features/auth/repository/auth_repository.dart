@@ -1,4 +1,4 @@
-import 'package:flutter_wrap_architecture/src/core/network/result.dart';
+import 'package:sapar/src/core/network/result.dart';
 
 abstract class IAuthRepository {
   /// Статус аутентификации

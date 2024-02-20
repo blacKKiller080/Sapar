@@ -4,10 +4,10 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_wrap_architecture/src/core/error/network_exception.dart';
-import 'package:flutter_wrap_architecture/src/core/network/layers/network_executer.dart';
-import 'package:flutter_wrap_architecture/src/core/network/result.dart';
-import 'package:flutter_wrap_architecture/src/features/auth/datasource/auth_api.dart';
+import 'package:sapar/src/core/error/network_exception.dart';
+import 'package:sapar/src/core/network/layers/network_executer.dart';
+import 'package:sapar/src/core/network/result.dart';
+import 'package:sapar/src/features/auth/datasource/auth_api.dart';
 
 import 'package:l/l.dart';
 

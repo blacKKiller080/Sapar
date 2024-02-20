@@ -113,7 +113,7 @@ mixin _LoggerMixin on BaseSharedPreferencesDao {
 }
 
 mixin _KeyImplementationMixin on BaseSharedPreferencesDao {
-  late final String _fullNamespace = 'flutter_wrap_architecture_app.$_name';
+  late final String _fullNamespace = 'sapar_app.$_name';
   late final F1<String, String> _memoizedKey = _key.memoize();
 
   String _key(String name) => '$_fullNamespace.$name';

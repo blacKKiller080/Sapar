@@ -1,6 +1,6 @@
 // ignore_for_file: avoid-dynamic
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter_wrap_architecture/src/core/network/interfaces/base_client_generator.dart';
+import 'package:sapar/src/core/network/interfaces/base_client_generator.dart';
 
 part 'auth_api.freezed.dart';
 

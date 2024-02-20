@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_wrap_architecture/src/core/extension/extensions.dart';
+import 'package:sapar/src/core/extension/extensions.dart';
 
 import '../interfaces/base_model.dart';
 

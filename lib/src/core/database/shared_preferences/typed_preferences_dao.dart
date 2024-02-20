@@ -1,4 +1,4 @@
-import 'package:flutter_wrap_architecture/src/core/database/shared_preferences/shared_preferences_dao.dart';
+import 'package:sapar/src/core/database/shared_preferences/shared_preferences_dao.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'preferences_entries.dart';

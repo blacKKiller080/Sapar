@@ -19,7 +19,7 @@ class CommonButton extends StatelessWidget {
 
   double contentPaddingVertical;
   double fontSize;
-  bool hasIconMiniButton;
+  bool miniButton;
   bool hasDownIcon;
   double? radius;
   double? containerWidth;
@@ -42,7 +42,7 @@ class CommonButton extends StatelessWidget {
     this.margin,
     this.contentPaddingVertical = 17.5,
     this.fontSize = 16,
-    this.hasIconMiniButton = false,
+    this.miniButton = false,
     this.hasDownIcon = false,
     this.icon,
     this.contentPaddingHorizontal = 0,
@@ -109,7 +109,7 @@ class CommonButton extends StatelessWidget {
             ),
           ),
         ),
-        child: !hasIconMiniButton
+        child: !miniButton
             ? hasDownIcon
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -128,10 +128,9 @@ class CommonButton extends StatelessWidget {
                     EdgeInsets.symmetric(horizontal: contentPaddingHorizontal),
                 // constraints: const BoxConstraints(),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     child,
-                    SizedBox(child: icon),
                   ],
                 ),
               ),

@@ -38,6 +38,7 @@ dependencies:
   loader_overlay: ^2.2.0
   shimmer: ^3.0.0
   provider: ^6.0.5
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -62,3 +63,25 @@ flutter:
     - assets/icons/
     - assets/png/
     - assets/svg/
+
+  fonts:
+    - family: NotoSans
+      fonts:
+        - asset: assets/fonts/NotoSans/NotoSans-Black.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-BlackItalic.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-Bold.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-BoldItalic.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-ExtraBold.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-ExtraBoldItalic.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-ExtraLight.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-ExtraLightItalic.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-Italic.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-Light.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-LightItalic.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-Medium.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-MediumItalic.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-Regular.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-SemiBold.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-SemiBoldItalic.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-Thin.ttf
+        - asset: assets/fonts/NotoSans/NotoSans-thinItalic.ttf

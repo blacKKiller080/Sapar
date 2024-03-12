@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:path/path.dart';
 import 'package:sapar/src/core/extension/extensions.dart';
 import 'package:sapar/src/core/resources/resources.dart';
+import 'package:sapar/src/features/app/router/app_router.dart';
 import 'package:sapar/src/features/app/widgets/custom/common_input.dart';
 
 @RoutePage()
@@ -142,52 +143,55 @@ class MainPage extends StatelessWidget {
     String rating,
     BuildContext context,
   ) =>
-      Container(
-        // height: context.screenSize.height * 0.33,
-        // width: context.screenSize.width * 0.575,
-        height: 264,
-        width: 207,
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: AppColors.kMainGreen),
-          image: DecorationImage(image: AssetImage(picturePath)),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            saveButton(context),
-            const Spacer(),
-            Text(
-              placeName,
-              style: AppTextStyles.os16w500.copyWith(color: AppColors.kWhite),
-            ),
-            Row(
-              children: [
-                const Icon(
-                  Icons.location_on_outlined,
-                  color: AppColors.kWhite,
-                  size: 10,
-                ),
-                Text(
-                  location,
-                  style: AppTextStyles.os10w400
-                      .copyWith(color: AppColors.kMainGreen),
-                ),
-                const Spacer(),
-                const Icon(
-                  Icons.star_rounded,
-                  color: AppColors.kMainGreen,
-                  size: 10,
-                ),
-                Text(
-                  rating,
-                  style:
-                      AppTextStyles.os12w500.copyWith(color: AppColors.kWhite),
-                ),
-              ],
-            ),
-          ],
+      GestureDetector(
+        onTap: () => context.router.push(const ProductRoute()),
+        child: Container(
+          // height: context.screenSize.height * 0.33,
+          // width: context.screenSize.width * 0.575,
+          height: 264,
+          width: 207,
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: AppColors.kMainGreen),
+            image: DecorationImage(image: AssetImage(picturePath)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              saveButton(context),
+              const Spacer(),
+              Text(
+                placeName,
+                style: AppTextStyles.os16w500.copyWith(color: AppColors.kWhite),
+              ),
+              Row(
+                children: [
+                  const Icon(
+                    Icons.location_on_outlined,
+                    color: AppColors.kWhite,
+                    size: 10,
+                  ),
+                  Text(
+                    location,
+                    style: AppTextStyles.os10w400
+                        .copyWith(color: AppColors.kMainGreen),
+                  ),
+                  const Spacer(),
+                  const Icon(
+                    Icons.star_rounded,
+                    color: AppColors.kMainGreen,
+                    size: 10,
+                  ),
+                  Text(
+                    rating,
+                    style: AppTextStyles.os12w500
+                        .copyWith(color: AppColors.kWhite),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       );
 

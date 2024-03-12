@@ -26,12 +26,12 @@ class CustomCircleButton extends StatelessWidget {
       elevation: elevation,
       color: buttonColor,
       shape: border
-          ? RoundedRectangleBorder(
+          ? const RoundedRectangleBorder(
               side: BorderSide(
-                color: const Color(0xFF000000).withOpacity(0.16),
-                width: 3,
+                color: AppColors.kMainGreen,
+                width: 2,
               ),
-              borderRadius: const BorderRadius.all(
+              borderRadius: BorderRadius.all(
                 Radius.circular(100),
               ),
             )

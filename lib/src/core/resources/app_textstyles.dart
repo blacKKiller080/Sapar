@@ -113,6 +113,13 @@ mixin AppTextStyles {
     fontWeight: FontWeight.w400,
   );
 
+  static const os15w500 = TextStyle(
+    fontSize: 15,
+    fontFamily: 'NotoSans',
+    color: AppColors.kBlack,
+    fontWeight: FontWeight.w500,
+  );
+
   static const os13w400 = TextStyle(
     fontSize: 13,
     fontFamily: 'NotoSans',
@@ -310,6 +317,13 @@ mixin AppTextStyles {
 
   static const os20w500 = TextStyle(
     fontSize: 20,
+    fontFamily: 'NotoSans',
+    color: AppColors.kBlack,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const os25w500 = TextStyle(
+    fontSize: 25,
     fontFamily: 'NotoSans',
     color: AppColors.kBlack,
     fontWeight: FontWeight.w500,

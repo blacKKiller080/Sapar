@@ -7,7 +7,7 @@ mixin AppColors {
   static const Color kTextTertiary = Color(0xff566681);
   static const Color kTextSecondary = Color(0xff99A3B3);
   static const Color kBlue = Color(0xFF0085FF);
-  static const Color kElementsSecondary = Color(0xff57667F);
+  static const Color kElementsSecondary = Color(0xff808080);
   static const Color kElementsTertiary = Color(0xff9AA3B2);
   static const Color kBrandSecondary = Color(0xffEAF6EF);
   static const Color kTextBrandPrimary = Color(0xff2AA65C);

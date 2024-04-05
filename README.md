@@ -1,3 +1,4 @@
 # sapar
 
-A new Flutter project.
+A Flutter app for searching and exploring tours
+

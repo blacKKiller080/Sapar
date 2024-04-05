@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:sapar/src/features/app/presentation/launcher.dart';
+import 'package:sapar/src/features/auth/presentation/login_page.dart';
+import 'package:sapar/src/features/auth/presentation/registration_page.dart';
 import 'package:sapar/src/features/client/fourth_page/bookmarks_page.dart';
+import 'package:sapar/src/features/client/fourth_page/edit_profile_page.dart';
 import 'package:sapar/src/features/client/fourth_page/fourth_page.dart';
 import 'package:sapar/src/features/client/fourth_page/settings_page.dart';
 import 'package:sapar/src/features/client/main_page/main_page.dart';
@@ -89,14 +92,15 @@ class AppRouter extends _$AppRouter {
           initial: true,
           children: [
             AutoRoute(page: MainRoute.page),
-            AutoRoute(page: SecondRoute.page),
-            AutoRoute(page: ThirdRoute.page),
+            AutoRoute(page: NotificationRoute.page),
+            AutoRoute(page: PlannedToursRoute.page),
             AutoRoute(
               page: BaseProfileTab.page,
               children: [
                 AutoRoute(page: ProfileRoute.page, initial: true),
                 AutoRoute(page: BookMarksRoute.page),
                 AutoRoute(page: SettingsRoute.page),
+                AutoRoute(page: EditProfileRoute.page),
               ],
             ),
             // AutoRoute<void>(
@@ -109,6 +113,8 @@ class AppRouter extends _$AppRouter {
           ],
         ),
         AutoRoute(page: ProductRoute.page),
+        AutoRoute(page: LoginRoute.page),
+        AutoRoute(page: RegistrationRoute.page),
       ];
 }
 

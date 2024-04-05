@@ -15,7 +15,7 @@ class AppBarWithTitle extends StatelessWidget {
         children: [
           Text(
             title,
-            style: titleStyle ?? AppTextStyles.os16w600,
+            style: titleStyle ?? AppTextStyles.os20w500,
           ),
         ],
       ),

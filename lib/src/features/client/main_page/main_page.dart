@@ -1,15 +1,67 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:path/path.dart';
 import 'package:sapar/src/core/extension/extensions.dart';
 import 'package:sapar/src/core/resources/resources.dart';
 import 'package:sapar/src/features/app/router/app_router.dart';
 import 'package:sapar/src/features/app/widgets/custom/common_input.dart';
 
 @RoutePage()
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  Map<String, dynamic> data = {
+    "image": 'assets/png/test_banner.jpg',
+    "place": 'Кокжайлау',
+    "city": 'Алматы',
+    "rating": '4.9',
+  };
+  void _updateList(int buttonIndex) {
+    setState(() {
+      switch (buttonIndex) {
+        case 1:
+          data = {
+            "image": 'assets/png/test_banner.jpg',
+            "place": 'Кокжайлау',
+            "city": 'Алматы',
+            "rating": '4.9',
+          };
+        case 2:
+          data = {
+            "image": 'assets/png/shafran.png',
+            "place": 'Shafran',
+            "city": 'Алматы',
+            "rating": '4.5',
+          };
+        case 3:
+          data = {
+            "image": 'assets/png/test_banner.jpg',
+            "place": 'Кокжайлау',
+            "city": 'Алматы',
+            "rating": '4.9',
+          };
+        case 4:
+          data = {
+            "image": 'assets/png/test_banner.jpg',
+            "place": 'Кокжайлау',
+            "city": 'Алматы',
+            "rating": '4.9',
+          };
+        default:
+          data = {
+            "image": 'assets/png/test_banner.jpg',
+            "place": 'Кокжайлау',
+            "city": 'Алматы',
+            "rating": '4.9',
+          };
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,12 +125,13 @@ class MainPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              serviceContainers('assets/svg/restaurant.svg', 'Еда', context),
-              serviceContainers('assets/svg/hotel.svg', 'Отель', context),
-              serviceContainers('assets/svg/camping.svg', 'Туры', context),
+              serviceContainers('assets/svg/restaurant.svg', 'Еда', 2, context),
+              serviceContainers('assets/svg/hotel.svg', 'Отель', 3, context),
+              serviceContainers('assets/svg/camping.svg', 'Туры', 1, context),
               serviceContainers(
                 'assets/svg/airplane.svg',
-                'Транспорт',
+                'Услуги',
+                4,
                 context,
               ),
             ],
@@ -86,25 +139,28 @@ class MainPage extends StatelessWidget {
           const SizedBox(height: 20),
           SizedBox(
             height: 264,
-            child: ListView.builder(
+            child: ListView.separated(
               //Нужно заменить на сливер листы
               // padding: const EdgeInsets.only(left: 16, right: 7),
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: 5,
-              itemExtent: 225,
+              // itemExtent: 225,
               itemBuilder: (context, index) {
                 return Row(
                   children: [
                     bannerSliders(
-                      'assets/png/test_banner.jpg',
-                      'Кокжайлау',
-                      'Алматы',
-                      '4.9',
+                      data.values.elementAt(0).toString(),
+                      data.values.elementAt(1).toString(),
+                      data.values.elementAt(2).toString(),
+                      data.values.elementAt(3).toString(),
                       context,
                     ),
                   ],
                 );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return const SizedBox(width: 18);
               },
             ),
           ),
@@ -116,24 +172,31 @@ class MainPage extends StatelessWidget {
   Widget serviceContainers(
     String picturePath,
     String data,
+    int index,
     BuildContext context,
   ) =>
-      Column(
-        children: [
-          Container(
-            height: context.screenSize.height * 0.06625,
-            width: context.screenSize.width * 0.147,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: AppColors.kSecondaryGray,
+      GestureDetector(
+        onTap: () {
+          _updateList(index);
+        },
+        child: Column(
+          children: [
+            Container(
+              height: context.screenSize.height * 0.06625,
+              width: context.screenSize.width * 0.147,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: AppColors.kSecondaryGray,
+              ),
+              child: Center(child: SvgPicture.asset(picturePath)),
             ),
-            child: Center(child: SvgPicture.asset(picturePath)),
-          ),
-          Text(
-            data,
-            style: AppTextStyles.os12w500.copyWith(color: AppColors.kMainGreen),
-          ),
-        ],
+            Text(
+              data,
+              style:
+                  AppTextStyles.os12w500.copyWith(color: AppColors.kMainGreen),
+            ),
+          ],
+        ),
       );
 
   Widget bannerSliders(
@@ -154,7 +217,10 @@ class MainPage extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: AppColors.kMainGreen),
-            image: DecorationImage(image: AssetImage(picturePath)),
+            image: DecorationImage(
+              image: AssetImage(picturePath),
+              fit: BoxFit.contain,
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

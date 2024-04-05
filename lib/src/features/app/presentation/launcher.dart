@@ -11,6 +11,7 @@ import 'package:sapar/src/features/app/widgets/custom/custom_loading_widget.dart
 import 'package:sapar/src/core/extension/extensions.dart';
 import 'package:sapar/src/core/resources/resources.dart';
 import 'package:sapar/src/features/app/bloc/app_bloc.dart';
+import 'package:sapar/src/features/auth/presentation/login_page.dart';
 
 // ignore: unused_element
 const _tag = 'Launcher';
@@ -87,6 +88,7 @@ class _LauncherState extends State<Launcher> with WidgetsBindingObserver {
                 child: Text(''),
               ),
             ),
+            notAuthorizedState: () => LoginPage(),
             orElse: () {
               return const CustomLoadingWidget(
                 child: Base(),

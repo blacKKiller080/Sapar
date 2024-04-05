@@ -8,6 +8,7 @@ class CustomCircleButton extends StatelessWidget {
     this.size = 44,
     this.iconColor = Colors.black,
     this.buttonColor = AppColors.kWhite,
+    this.borderColor = AppColors.kMainGreen,
     this.elevation = 3,
     this.border = false,
     super.key,
@@ -19,6 +20,7 @@ class CustomCircleButton extends StatelessWidget {
   final double elevation;
   final Widget child;
   final bool border;
+  final Color borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +28,12 @@ class CustomCircleButton extends StatelessWidget {
       elevation: elevation,
       color: buttonColor,
       shape: border
-          ? const RoundedRectangleBorder(
+          ? RoundedRectangleBorder(
               side: BorderSide(
-                color: AppColors.kMainGreen,
+                color: borderColor,
                 width: 2,
               ),
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(100),
               ),
             )

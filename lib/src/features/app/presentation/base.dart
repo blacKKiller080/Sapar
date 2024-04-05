@@ -46,8 +46,8 @@ class _BaseState extends State<Base> with TickerProviderStateMixin {
     return AutoTabsScaffold(
       routes: const [
         MainRoute(),
-        SecondRoute(),
-        ThirdRoute(),
+        NotificationRoute(),
+        PlannedToursRoute(),
         BaseProfileTab(),
       ],
       // extendBody: true,

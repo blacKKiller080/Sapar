@@ -1,8 +1,5 @@
-// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, prefer_const_constructors, constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sapar/src/core/resources/resources.dart';
 
 class CommonInput extends StatefulWidget {
@@ -28,13 +25,13 @@ class CommonInput extends StatefulWidget {
   final Color oscuredIconColor;
   final void Function(String value)? onSubmitted;
   final EdgeInsets? margin;
-  double contentPaddingVertical;
-  double contentPaddingHorizontal;
-  double borderRadius;
+  final double contentPaddingVertical;
+  final double contentPaddingHorizontal;
+  final double borderRadius;
   final BorderRadius? isCustomBorderRadius;
-  bool isCenterTitle;
+  final bool isCenterTitle;
   final String? Function(String?)? validator;
-  TextInputAction? textInputAction;
+  final TextInputAction? textInputAction;
   final double borderWidth;
   final String? obscuringCharacter;
   final TextStyle? style;
@@ -43,7 +40,7 @@ class CommonInput extends StatefulWidget {
   final bool? isTexthint;
   final double labelPadding;
 
-  CommonInput(
+  const CommonInput(
     this.text, {
     this.type = InputType.TEXT,
     this.controller,
@@ -64,13 +61,13 @@ class CommonInput extends StatefulWidget {
     this.prefixIcon,
     this.contentPaddingVertical = 22,
     this.contentPaddingHorizontal = 16,
-    this.borderRadius = 8,
+    this.borderRadius = 16,
     this.isCenterTitle = false,
-    this.oscuredIconColor = AppColors.kGreen,
+    this.oscuredIconColor = AppColors.kMainGreen,
     this.textInputAction,
     this.borderWidth = 0.0,
     this.obscuringCharacter,
-    this.style = const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+    this.style = const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
     this.focusNode,
     this.autofocus,
     this.readOnly = false,
@@ -105,14 +102,11 @@ class _CommonInputState extends State<CommonInput> {
               ),
             )
           else
-            SizedBox.shrink(),
+            const SizedBox.shrink(),
           TextFormField(
             autofocus: widget.autofocus ?? false,
             readOnly: widget.readOnly,
             onFieldSubmitted: widget.onSubmitted,
-            textCapitalization: isPasswordInput()
-                ? TextCapitalization.none
-                : TextCapitalization.sentences,
             onChanged: widget.onChanged,
             validator: widget.validator,
             focusNode: widget.focusNode,
@@ -134,41 +128,42 @@ class _CommonInputState extends State<CommonInput> {
             decoration: InputDecoration(
               fillColor: widget.fillColor,
               filled: true,
-              suffixIconConstraints: BoxConstraints(),
-              prefixIconConstraints: BoxConstraints(),
+              suffixIconConstraints: const BoxConstraints(),
+              prefixIconConstraints: const BoxConstraints(),
               suffixIcon: isPasswordInput()
                   ? Padding(
                       padding: EdgeInsets.only(
-                          right: widget.contentPaddingHorizontal),
+                        right: widget.contentPaddingHorizontal,
+                      ),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
                             _isTextNotObscured = !_isTextNotObscured;
                           });
                         },
-                        child: SvgPicture.asset(
+                        child: Icon(
                           _isTextNotObscured
-                              ? 'assets/icons/eye.svg'
-                              : 'assets/icons/eye_slash.svg',
-                          theme:
-                              SvgTheme(currentColor: widget.oscuredIconColor),
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: widget.oscuredIconColor,
                           // color: widget.oscuredIconColor,
                         ),
                       ),
                     )
                   : widget.suffixIcon != null
                       ? Padding(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                             right: 10,
                           ), // add padding to adjust icon
                           child: widget.suffixIcon,
                         )
-                      : SizedBox.shrink(),
+                      : const SizedBox.shrink(),
               prefixIcon: widget.prefixIcon != null
                   ? Padding(
                       padding: EdgeInsets.only(
-                          left: widget.contentPaddingHorizontal,
-                          right: 12), // add padding to adjust icon
+                        left: widget.contentPaddingHorizontal,
+                        right: 12,
+                      ), // add padding to adjust icon
                       child: widget.prefixIcon,
                     )
                   : SizedBox(
@@ -186,14 +181,9 @@ class _CommonInputState extends State<CommonInput> {
               ),
               label: widget.isTexthint!
                   ? null
-                  : Padding(
-                      padding:
-                          EdgeInsets.only(top: widget.labelPadding), //FIX ME
-                      child: Text(
-                        widget.text,
-                        style:
-                            widget.style!.copyWith(color: widget.customColor),
-                      ),
+                  : Text(
+                      widget.text,
+                      style: widget.style!.copyWith(color: widget.customColor),
                     ),
               // labelText: widget.isTexthint! ? null : widget.text,
               // labelStyle: widget.style!
@@ -244,13 +234,6 @@ class _CommonInputState extends State<CommonInput> {
     );
   }
 
-  String? _textValidator(String? value) {
-    if (value?.isEmpty ?? true) {
-      return '';
-    }
-    return null;
-  }
-
   List<TextInputFormatter> _getInputFormatters() {
     return widget.formatters ?? [];
   }
@@ -270,7 +253,8 @@ class _CommonInputState extends State<CommonInput> {
         textType = TextInputType.number;
         break;
       case InputType.NUMBER_WITH_OPTIONS:
-        textType = TextInputType.numberWithOptions(decimal: true, signed: true);
+        textType =
+            const TextInputType.numberWithOptions(decimal: true, signed: true);
         break;
       case InputType.PHONE:
         textType = TextInputType.number;

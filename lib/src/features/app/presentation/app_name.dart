@@ -30,11 +30,7 @@ class AppName extends StatelessWidget {
             sharedPreferences: sharedPreferences,
             networkExecuter: DependenciesScope.of(context).networkExecuter,
           ),
-          child: MediaQuery(
-            data: MediaQuery.of(context)
-                .copyWith(textScaleFactor: 1), // Adjust the factor as needed
-            child: const SettingsScope(child: AppConfiguration()),
-          ),
+          child: const SettingsScope(child: AppConfiguration()),
         ),
       );
 }

@@ -45,9 +45,8 @@ class AppBLoC extends Bloc<AppEvent, AppState> {
             _startListenDio(event, emit),
         sendDeviceToken: (_SendDeviceToken event) async =>
             _sendDeviceToken(event, emit),
-
-        // onboardingSave: (_OnboardingSave event) async =>
-        //     _onboardingSave(event, emit),
+        onboardingSave: (_OnboardingSave event) async =>
+            _onboardingSave(event, emit),
       ),
     );
   }
@@ -57,6 +56,7 @@ class AppBLoC extends Bloc<AppEvent, AppState> {
     Emitter<AppState> emit,
   ) async {
     emit(const AppState.loadingState());
+    final bool onboarding = _authRepository.getOnboarding();
 
     log("app_bloc -> _checkAuth -> isAuthen:$isAuthenticated");
 
@@ -125,14 +125,27 @@ class AppBLoC extends Bloc<AppEvent, AppState> {
     //     }
     //   },
     //   failure: (e) {
-    if (_authRepository.isAuthenticated) {
-      emit(const AppState.inAppState());
+    if (onboarding) {
+      if (_authRepository.isAuthenticated) {
+        emit(const AppState.inAppState());
+      } else {
+        emit(const AppState.notAuthorizedState());
+      }
     } else {
-      emit(const AppState.notAuthorizedState());
+      emit(const AppState.onboardingState());
     }
     // emit(AppState.errorState(message: 'Something is wrong (checkAuth $e)'));
     // },
     // );
+  }
+
+  Future<void> _onboardingSave(
+    _OnboardingSave event,
+    Emitter<AppState> emit,
+  ) async {
+    _authRepository.setOnboarding(onboarding: true);
+
+    emit(const AppState.notAuthorizedState());
   }
 
   Future<void> _login(
@@ -231,6 +244,8 @@ class AppEvent with _$AppEvent {
   const factory AppEvent.startListenDio() = _StartListenDio;
 
   const factory AppEvent.sendDeviceToken() = _SendDeviceToken;
+
+  const factory AppEvent.onboardingSave() = _OnboardingSave;
 }
 
 ///
@@ -245,6 +260,8 @@ class AppState with _$AppState {
   const factory AppState.notAuthorizedState() = _NotAuthorizedState;
 
   const factory AppState.inAppState() = _InAppState;
+
+  const factory AppState.onboardingState() = _OnboardingState;
 
   const factory AppState.errorState({required String message}) = _ErrorState;
 }

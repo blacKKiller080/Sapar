@@ -12,6 +12,7 @@ import 'package:sapar/src/core/extension/extensions.dart';
 import 'package:sapar/src/core/resources/resources.dart';
 import 'package:sapar/src/features/app/bloc/app_bloc.dart';
 import 'package:sapar/src/features/auth/presentation/login_page.dart';
+import 'package:sapar/src/features/auth/presentation/onboarding_page.dart';
 
 // ignore: unused_element
 const _tag = 'Launcher';
@@ -77,6 +78,7 @@ class _LauncherState extends State<Launcher> with WidgetsBindingObserver {
       child: BlocBuilder<AppBLoC, AppState>(
         builder: (context, state) {
           return state.maybeWhen(
+            onboardingState: () => const OnboardingPage(),
             loadingState: () => const _Scaffold(
               child: CustomLoadingWidget(
                 child: Text(''),

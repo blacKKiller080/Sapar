@@ -10,4 +10,10 @@ abstract class IAuthRepository {
     required String login,
     required String password,
   });
+
+  bool getOnboarding();
+
+  Future<void> setOnboarding({
+    required bool onboarding,
+  });
 }

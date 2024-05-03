@@ -393,9 +393,9 @@ mixin AppTextStyles {
   );
 
   static const os32w700 = TextStyle(
-    fontSize: 24,
+    fontSize: 30,
     fontFamily: 'NotoSans',
     color: AppColors.kBlack,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w600,
   );
 }

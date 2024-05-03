@@ -43,6 +43,13 @@ class AuthRepositoryImpl extends IAuthRepository {
   }
 
   @override
+  Future<void> setOnboarding({required bool onboarding}) async =>
+      _authDao.onboarding.setValue(onboarding);
+
+  @override
+  bool getOnboarding() => _authDao.onboarding.value ?? false;
+
+  @override
   Future<bool> clearUser() async {
     final bool userFlag = await _authDao.user.remove();
     // final bool tokenFlag = await _authDao.accessToken.remove();

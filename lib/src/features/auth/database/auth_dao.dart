@@ -6,6 +6,8 @@ abstract class IAuthDao {
 
   PreferencesEntry<String> get accessToken;
 
+  PreferencesEntry<bool> get onboarding;
+
   PreferencesEntry<String> get refreshToken;
 }
 
@@ -16,6 +18,9 @@ class AuthDao extends TypedPreferencesDao implements IAuthDao {
 
   @override
   PreferencesEntry<String> get user => stringEntry('user');
+
+  @override
+  PreferencesEntry<bool> get onboarding => boolEntry('onboarding');
 
   @override
   PreferencesEntry<String> get accessToken => stringEntry('accessToken');

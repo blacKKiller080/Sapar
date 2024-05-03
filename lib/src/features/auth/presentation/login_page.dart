@@ -93,9 +93,14 @@ class _LoginPageState extends State<LoginPage> {
                       borderWidth: 1,
                     ),
                     const SizedBox(height: 15),
-                    const Text(
-                      'Забыли пароль?',
-                      style: AppTextStyles.os13w400,
+                    GestureDetector(
+                      onTap: () {
+                        context.router.push(const PasswordRecoveryRoute());
+                      },
+                      child: const Text(
+                        'Забыли пароль?',
+                        style: AppTextStyles.os13w400,
+                      ),
                     ),
                     CommonButton(
                       onPressed: () {

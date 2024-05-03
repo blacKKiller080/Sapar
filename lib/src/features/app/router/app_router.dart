@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:sapar/src/features/app/presentation/launcher.dart';
 import 'package:sapar/src/features/auth/presentation/login_page.dart';
+import 'package:sapar/src/features/auth/presentation/onboarding_page.dart';
+import 'package:sapar/src/features/auth/presentation/otp_page.dart';
+import 'package:sapar/src/features/auth/presentation/password_recovery_page.dart';
 import 'package:sapar/src/features/auth/presentation/registration_page.dart';
 import 'package:sapar/src/features/client/fourth_page/bookmarks_page.dart';
 import 'package:sapar/src/features/client/fourth_page/edit_profile_page.dart';
@@ -115,6 +118,9 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProductRoute.page),
         AutoRoute(page: LoginRoute.page),
         AutoRoute(page: RegistrationRoute.page),
+        AutoRoute(page: PasswordRecoveryRoute.page),
+        AutoRoute(page: OtpRoute.page),
+        AutoRoute(page: OnboardingRoute.page),
       ];
 }
 

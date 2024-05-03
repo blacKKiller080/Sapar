@@ -4,10 +4,9 @@ import 'package:sapar/src/core/extension/extensions.dart';
 import 'package:sapar/src/core/resources/resources.dart';
 import 'package:sapar/src/features/app/router/app_router.dart';
 import 'package:sapar/src/features/app/widgets/app_bar_with_title.dart';
-import 'package:sapar/src/features/app/widgets/base_app_bar.dart';
 import 'package:sapar/src/features/app/widgets/custom/common_button.dart';
 import 'package:sapar/src/features/app/widgets/custom/common_input.dart';
-import 'package:sapar/src/features/app/widgets/custom/custom_checkbox.dart';
+import 'package:sapar/src/features/app/widgets/custom/custom_back_button.dart';
 
 @RoutePage()
 class PasswordRecoveryPage extends StatefulWidget {
@@ -44,17 +43,26 @@ class _PasswordRecoveryPageState extends State<PasswordRecoveryPage> {
                 left: 25,
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: CustomBackButton(),
+                  ),
+                  SizedBox(height: context.screenSize.height * 0.1),
                   const AppBarWithTitle(title: 'Восстановление аккаунта'),
                   SizedBox(height: context.screenSize.height * 0.05),
-                  const Text(
-                    'Введите логин или номер телефона, мы отправим код подтверждения для восстановление аккаунта',
-                    style: AppTextStyles.os12w400,
+                  SizedBox(
+                    width: context.screenSize.width * 0.7,
+                    child: const Text(
+                      'Введите логин или номер телефона, мы отправим код подтверждения для восстановление аккаунта',
+                      style: AppTextStyles.os12w400,
+                    ),
                   ),
+                  const SizedBox(height: 30),
                   CommonInput(
                     'Логин или номер телефона',
                     controller: loginController,
-                    type: InputType.PASSWORD,
                     customColor: AppColors.kBlack,
                     textInputAction: TextInputAction.next,
                     contentPaddingVertical: 14,
@@ -64,13 +72,13 @@ class _PasswordRecoveryPageState extends State<PasswordRecoveryPage> {
                   CommonButton(
                     onPressed: () {
                       // context.appBloc.add()
-                      context.router.pop();
+                      context.router.push(const OtpRoute());
                     },
                     margin: const EdgeInsets.only(
                       top: 25,
                       bottom: 16,
                     ),
-                    child: const Text('Зарегистрироваться'),
+                    child: const Text('Отправить'),
                   ),
                 ],
               ),

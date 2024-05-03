@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:sapar/src/core/extension/extensions.dart';
 import 'package:sapar/src/core/resources/resources.dart';
-import 'package:sapar/src/features/app/router/app_router.dart';
 import 'package:sapar/src/features/app/widgets/app_bar_with_title.dart';
 import 'package:sapar/src/features/app/widgets/base_app_bar.dart';
 import 'package:sapar/src/features/app/widgets/custom/common_button.dart';
@@ -56,7 +55,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
               child: Column(
                 children: [
-                  const AppBarWithTitle(title: 'Регистрация аккаунта'),
+                  const BaseAppBar(title: 'Регистрация аккаунта'),
                   SizedBox(height: context.screenSize.height * 0.05),
                   CommonInput(
                     'Имя',

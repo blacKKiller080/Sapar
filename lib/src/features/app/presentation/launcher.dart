@@ -90,7 +90,7 @@ class _LauncherState extends State<Launcher> with WidgetsBindingObserver {
                 child: Text(''),
               ),
             ),
-            notAuthorizedState: () => LoginPage(),
+            notAuthorizedState: () => const LoginPage(),
             orElse: () {
               return const CustomLoadingWidget(
                 child: Base(),

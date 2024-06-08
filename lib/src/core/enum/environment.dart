@@ -9,7 +9,7 @@
 //   development,
 // }
 
-const String kBaseUrl = 'https://test/gateway';
+const String kBaseUrl = 'http://185.100.67.121:7777/';
 
 
 

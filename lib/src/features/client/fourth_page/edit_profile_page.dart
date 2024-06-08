@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:sapar/src/core/resources/resources.dart';
 import 'package:sapar/src/features/app/widgets/base_app_bar.dart';
 import 'package:sapar/src/features/app/widgets/custom/common_button.dart';
-import 'package:sapar/src/features/client/fourth_page/locale_bottom_sheet.dart';
+import 'package:sapar/src/features/auth/model/user_dto.dart';
 
 @RoutePage()
 class EditProfilePage extends StatelessWidget {
-  const EditProfilePage({super.key});
+  final UserDTO user;
+  const EditProfilePage({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +17,13 @@ class EditProfilePage extends StatelessWidget {
         children: [
           const BaseAppBar(title: 'Личные данные'),
           const SizedBox(height: 50),
-          profileContainer(),
+          profileContainer(user),
         ],
       ),
     );
   }
 
-  Widget profileContainer() => Container(
+  Widget profileContainer(UserDTO user) => Container(
         margin: const EdgeInsets.symmetric(horizontal: 43),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
@@ -46,8 +47,8 @@ class EditProfilePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 5),
-            const Text(
-              'Нурдаулет',
+            Text(
+              user.name,
               style: AppTextStyles.os20w500,
             ),
             const SizedBox(height: 25),
@@ -89,7 +90,7 @@ class EditProfilePage extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  '+7 777 777 77 77',
+                  user.phone,
                   style: AppTextStyles.os12w500
                       .copyWith(color: AppColors.kTextSecondary),
                 ),
@@ -99,7 +100,7 @@ class EditProfilePage extends StatelessWidget {
             CommonButton(
               margin: const EdgeInsets.symmetric(horizontal: 43, vertical: 35),
               child: const Text('Сохранить'),
-            )
+            ),
           ],
         ),
       );

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:sapar/src/core/extension/extensions.dart';
 import 'package:sapar/src/core/resources/resources.dart';
+import 'package:sapar/src/features/auth/model/contact_dto.dart';
 
 class ContactBottomSheet extends StatefulWidget {
+  final Contacts contacts;
   const ContactBottomSheet({
     super.key,
+    required this.contacts,
   });
 
   static Future<void> show(
     BuildContext context,
+    Contacts contacts,
   ) async {
     showModalBottomSheet(
       context: context,
@@ -22,7 +26,7 @@ class ContactBottomSheet extends StatefulWidget {
           topRight: Radius.circular(12),
         ),
       ),
-      builder: (_) => const ContactBottomSheet(),
+      builder: (_) => ContactBottomSheet(contacts: contacts),
     );
   }
 
@@ -60,12 +64,8 @@ class _ContactBottomSheetState extends State<ContactBottomSheet> {
               Icon(Icons.phone),
             ],
           ),
-          const Text(
-            '+ 7 777 777 77 77',
-            style: AppTextStyles.os12w400,
-          ),
-          const Text(
-            '+ 7 777 777 77 77',
+          Text(
+            widget.contacts.phone ?? 'Пусто',
             style: AppTextStyles.os12w400,
           ),
           const SizedBox(height: 8),
@@ -73,32 +73,32 @@ class _ContactBottomSheetState extends State<ContactBottomSheet> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Whats’App',
+                'Website',
                 style: AppTextStyles.os15w500,
               ),
-              Icon(Icons.support_agent_outlined),
-            ],
-          ),
-          const Text(
-            '+ 7 777 777 77 77',
-            style: AppTextStyles.os12w400,
-          ),
-          const SizedBox(height: 8),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Instagram',
-                style: AppTextStyles.os15w500,
-              ),
-              Icon(Icons.abc),
+              Icon(Icons.language),
             ],
           ),
           Text(
-            '@shafran_cafe',
-            style: AppTextStyles.os15w400GreyNeutral
-                .copyWith(color: AppColors.kBlack),
+            widget.contacts.site ?? 'Пусто',
+            style: AppTextStyles.os12w400,
           ),
+          const SizedBox(height: 8),
+          // const Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     Text(
+          //       'Instagram',
+          //       style: AppTextStyles.os15w500,
+          //     ),
+          //     Icon(Icons.abc),
+          //   ],
+          // ),
+          // Text(
+          //   widget.contacts.insta ?? 'Пусто',
+          //   style: AppTextStyles.os15w400GreyNeutral
+          //       .copyWith(color: AppColors.kBlack),
+          // ),
         ],
       ),
     );

@@ -4,6 +4,12 @@ import 'package:sapar/src/core/extension/extensions.dart';
 import 'package:sapar/src/core/widget/bloc_scope.dart';
 import 'package:sapar/src/features/app/bloc/app_bloc.dart';
 import 'package:sapar/src/features/app/enum/app_language.dart';
+import 'package:sapar/src/features/auth/bloc/login_cubit.dart';
+import 'package:sapar/src/features/client/fourth_page/bloc/profile_bloc.dart';
+import 'package:sapar/src/features/client/main_page/bloc/favorite_cubit.dart';
+import 'package:sapar/src/features/client/main_page/bloc/feedback_cubit.dart';
+import 'package:sapar/src/features/client/main_page/bloc/place_cubit.dart';
+import 'package:sapar/src/features/client/main_page/bloc/plan_cubit.dart';
 import 'package:sapar/src/features/settings/bloc/settings_bloc.dart';
 import 'package:sapar/src/features/settings/enum/app_theme.dart';
 import 'package:provider/provider.dart';
@@ -70,6 +76,36 @@ class SettingsScope extends StatelessWidget {
           ),
           BlocProvider<AppBLoC>(
             create: (context) => AppBLoC(
+              context.repository.authRepository,
+            ),
+          ),
+          BlocProvider<LoginCubit>(
+            create: (context) => LoginCubit(
+              context.repository.authRepository,
+            ),
+          ),
+          BlocProvider<PlaceCubit>(
+            create: (context) => PlaceCubit(
+              context.repository.authRepository,
+            ),
+          ),
+          BlocProvider<ProfileBLoC>(
+            create: (context) => ProfileBLoC(
+              authRepository: context.repository.authRepository,
+            ),
+          ),
+          BlocProvider<FavoriteCubit>(
+            create: (context) => FavoriteCubit(
+              context.repository.authRepository,
+            ),
+          ),
+          BlocProvider<FeedbackCubit>(
+            create: (context) => FeedbackCubit(
+              context.repository.authRepository,
+            ),
+          ),
+          BlocProvider<PlanCubit>(
+            create: (context) => PlanCubit(
               context.repository.authRepository,
             ),
           ),

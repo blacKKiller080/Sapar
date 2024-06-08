@@ -4,16 +4,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sapar/src/core/resources/resources.dart';
 
 class CustomTabWidget extends StatelessWidget {
-  final String icon;
-  final String activeIcon;
-  final String title;
+  final IconData icon;
+  final IconData activeIcon;
   final int currentIndex;
   final int tabIndex;
   const CustomTabWidget({
     super.key,
     required this.icon,
     required this.activeIcon,
-    required this.title,
     required this.currentIndex,
     required this.tabIndex,
   });
@@ -26,27 +24,15 @@ class CustomTabWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
+            Icon(
               tabIndex == currentIndex ? activeIcon : icon,
-              colorFilter: tabIndex == currentIndex
-                  ? const ColorFilter.mode(
-                      AppColors.kMainGreen,
-                      BlendMode.srcIn,
-                    )
-                  : null,
+              color: tabIndex == currentIndex
+                  ? AppColors.kMainGreen
+                  : AppColors.kGrey6,
+              size: 35,
             ),
             const SizedBox(
               height: 4,
-            ),
-            Text(
-              title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: AppTextStyles.os10w500.copyWith(
-                color: tabIndex == currentIndex
-                    ? AppColors.kMainGreen
-                    : Colors.black,
-              ),
             ),
           ],
         ),

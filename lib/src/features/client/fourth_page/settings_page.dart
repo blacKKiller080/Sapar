@@ -7,11 +7,13 @@ import 'package:sapar/src/features/app/router/app_router.dart';
 import 'package:sapar/src/features/app/widgets/base_app_bar.dart';
 import 'package:sapar/src/features/app/widgets/custom/common_button.dart';
 import 'package:sapar/src/features/app/widgets/custom/custom_switch.dart';
+import 'package:sapar/src/features/auth/model/user_dto.dart';
 import 'package:sapar/src/features/client/fourth_page/locale_bottom_sheet.dart';
 
 @RoutePage()
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+  final UserDTO user;
+  const SettingsPage({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class SettingsPage extends StatelessWidget {
         children: [
           const BaseAppBar(title: 'Настройки'),
           const SizedBox(height: 50),
-          profileContainer(context),
+          profileContainer(context, user),
           const SizedBox(height: 50),
           settingsContainer(context),
           CommonButton(
@@ -35,8 +37,9 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  Widget profileContainer(BuildContext context) => GestureDetector(
-        onTap: () => context.router.push(const EditProfileRoute()),
+  Widget profileContainer(BuildContext context, UserDTO user) =>
+      GestureDetector(
+        onTap: () => context.router.push(EditProfileRoute(user: user)),
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 43),
           decoration: BoxDecoration(
@@ -64,8 +67,8 @@ class SettingsPage extends StatelessWidget {
               RichText(
                 text: TextSpan(
                   children: [
-                    const TextSpan(
-                      text: 'Нурдаулет\n',
+                    TextSpan(
+                      text: '${user.name}\n',
                       style: AppTextStyles.os20w500,
                     ),
                     TextSpan(

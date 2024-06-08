@@ -1,11 +1,19 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loader_overlay/loader_overlay.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:sapar/src/core/extension/extensions.dart';
+import 'package:sapar/src/core/helper/input_helper.dart';
 import 'package:sapar/src/core/resources/resources.dart';
 import 'package:sapar/src/features/app/bloc/app_bloc.dart';
 import 'package:sapar/src/features/app/router/app_router.dart';
 import 'package:sapar/src/features/app/widgets/custom/common_button.dart';
 import 'package:sapar/src/features/app/widgets/custom/common_input.dart';
+import 'package:sapar/src/features/app/widgets/custom/custom_snackbars.dart';
+import 'package:sapar/src/features/auth/bloc/login_cubit.dart';
 
 @RoutePage()
 class LoginPage extends StatefulWidget {
@@ -18,6 +26,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController loginController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  MaskTextInputFormatter formatter = InputHelper.maskTextInputFormatter();
 
   // @override
   // void dispose() {
@@ -35,9 +44,31 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
+    return BlocListener<LoginCubit, LoginState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          initialState: () {
+            context.loaderOverlay.hide();
+          },
+          loadingState: () {
+            context.loaderOverlay.show();
+          },
+          regionState: (region) => context.loaderOverlay.hide(),
+          tokenState: (accessToken) {
+            context.loaderOverlay.hide();
+
+            BlocProvider.of<LoginCubit>(context).getUser();
+            log('Log from token state in login page');
+          },
+          loadedState: (user) {
+            context.loaderOverlay.hide();
+            context.appBloc.add(const AppEvent.logining());
+          },
+          errorState: (message, iinMessage, passwordMessage) {
+            context.loaderOverlay.hide();
+            buildErrorCustomSnackBar(context, message);
+          },
+        );
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -76,9 +107,11 @@ class _LoginPageState extends State<LoginPage> {
                       controller: loginController,
                       customColor: AppColors.kBlack,
                       contentPaddingVertical: 14,
+                      type: InputType.NUMBER,
                       textInputAction: TextInputAction.next,
                       borderColor: AppColors.kMainGreen,
                       borderWidth: 1,
+                      formatters: [formatter],
                     ),
                     CommonInput(
                       'Пароль',
@@ -105,7 +138,11 @@ class _LoginPageState extends State<LoginPage> {
                     CommonButton(
                       onPressed: () {
                         // context.router.push(const MainRoute());
-                        context.appBloc.add(const AppEvent.logining());
+
+                        BlocProvider.of<LoginCubit>(context).login(
+                          login: '8${formatter.getUnmaskedText()}',
+                          password: passwordController.text,
+                        );
                       },
                       margin: const EdgeInsets.only(
                         top: 25,

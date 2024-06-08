@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:sapar/src/features/app/presentation/launcher.dart';
+import 'package:sapar/src/features/auth/model/place_dto.dart';
+import 'package:sapar/src/features/auth/model/user_dto.dart';
 import 'package:sapar/src/features/auth/presentation/login_page.dart';
 import 'package:sapar/src/features/auth/presentation/onboarding_page.dart';
 import 'package:sapar/src/features/auth/presentation/otp_page.dart';

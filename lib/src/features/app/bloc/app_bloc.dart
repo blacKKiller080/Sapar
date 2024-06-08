@@ -20,20 +20,20 @@ class AppBLoC extends Bloc<AppEvent, AppState> {
   AppBLoC(
     this._authRepository,
   ) : super(const AppState.loadingState()) {
-    NotAuthLogic().statusSubject.listen(
-      (value) async {
-        log('_startListenDio message from stream :: $value');
+    // NotAuthLogic().statusSubject.listen(
+    //   (value) async {
+    //     log('_startListenDio message from stream :: $value');
 
-        if (value == 401) {
-          await _authRepository.clearUser().whenComplete(() {
-            add(const AppEvent.startListenDio());
-            log('notauthworket is worked', name: _tag);
-            // }
-          });
-          // }
-        }
-      },
-    );
+    //     if (value == 401) {
+    //       await _authRepository.clearUser().whenComplete(() {
+    //         add(const AppEvent.startListenDio());
+    //         log('notauthworket is worked', name: _tag);
+    //         // }
+    //       });
+    //       // }
+    //     }
+    //   },
+    // );
 
     on<AppEvent>(
       (AppEvent event, Emitter<AppState> emit) async => event.map(

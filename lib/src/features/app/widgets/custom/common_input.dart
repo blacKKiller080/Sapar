@@ -195,6 +195,14 @@ class _CommonInputState extends State<CommonInput> {
               errorText: widget.errorText,
               errorStyle: AppTextStyles.os13w500.copyWith(color: Colors.red),
               alignLabelWithHint: true,
+              disabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  width: widget.borderWidth,
+                  color: widget.borderColor,
+                ),
+                borderRadius: widget.isCustomBorderRadius ??
+                    BorderRadius.circular(widget.borderRadius),
+              ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   width: widget.borderWidth,

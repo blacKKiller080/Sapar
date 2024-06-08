@@ -1,6 +1,9 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:sapar/src/features/auth/model/favorite_dto.dart';
+import 'package:sapar/src/features/auth/model/feedback_dto.dart';
+import 'package:sapar/src/features/auth/model/region_dto.dart';
 
 part 'user_dto.freezed.dart';
 part 'user_dto.g.dart';
@@ -8,17 +11,15 @@ part 'user_dto.g.dart';
 @freezed
 class UserDTO with _$UserDTO {
   const factory UserDTO({
-    String? id,
-    required String iin,
+    required int id,
     required String phone,
-    String? lastName,
-    String? firstName,
-    String? middleName,
-    String? workplace,
-    String? position,
-    String? email,
-    required bool isChangePassword,
-    required bool isValidated,
+    required String name,
+    required String surname,
+    required DateTime birthDate,
+    required String sex,
+    required List<FeedbackDTO> likedFeedbacks,
+    required List<Favorite> favorites,
+    required Region region,
   }) = _UserDTO;
 
   factory UserDTO.fromJson(Map<String, dynamic> json) =>

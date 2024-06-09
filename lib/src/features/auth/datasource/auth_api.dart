@@ -39,6 +39,10 @@ class AuthApi extends BaseClientGenerator with _$AuthApi {
 
   const factory AuthApi.getPlans() = _GetPlans;
 
+  const factory AuthApi.deletePlan({
+    required String id,
+  }) = _DeletePlan;
+
   const factory AuthApi.createPlan({
     required int amount,
     required int placeId,
@@ -120,6 +124,7 @@ class AuthApi extends BaseClientGenerator with _$AuthApi {
         registration: (a, b, c, d, e, f, g) => 'POST',
         createFeedback: (comment, placeId) => 'POST',
         createPlan: (a, b, c, d) => 'POST',
+        deletePlan: (id) => 'DELETE',
         // addLikeToFavorites: (id) => 'POST',
         // addLikeToFeedback: (id) => "POST",
       );
@@ -138,6 +143,7 @@ class AuthApi extends BaseClientGenerator with _$AuthApi {
         getAllPlaces: () => '/place',
         getPlans: () => '/plans',
         createPlan: (a, b, c, d) => '/plans',
+        deletePlan: (String id) => '/plans/$id',
       );
 
   /// Параметры запросов

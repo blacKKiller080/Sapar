@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sapar/src/core/extension/extensions.dart';
 import 'package:sapar/src/core/resources/resources.dart';
 import 'package:sapar/src/features/app/widgets/app_bar_with_title.dart';
+import 'package:sapar/src/features/app/widgets/custom/common_button.dart';
 import 'package:sapar/src/features/auth/model/plan_dto.dart';
 import 'package:sapar/src/features/client/main_page/bloc/plan_cubit.dart';
 
@@ -34,6 +37,9 @@ class _PlannedToursPageState extends State<PlannedToursPage> {
         state.whenOrNull(
           loadedAllPlans: (plans) {
             planDTO = plans;
+          },
+          loadedState: (statusCode) {
+            BlocProvider.of<PlanCubit>(context).getPlans();
           },
         );
       },
@@ -72,6 +78,7 @@ class _PlannedToursPageState extends State<PlannedToursPage> {
                         child: ListView.builder(
                           itemCount: plans.length,
                           itemBuilder: (context, index) {
+                            log(plans.length.toString());
                             return item1(plans[index]);
                           },
                         ),
@@ -192,7 +199,7 @@ class _PlannedToursPageState extends State<PlannedToursPage> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      BlocProvider.of<PlanCubit>(context).getPlans();
+                      downloadNewEventDialog(context, planDTO.id.toString());
                     },
                     child: const Icon(
                       Icons.more_vert,
@@ -261,4 +268,73 @@ class _PlannedToursPageState extends State<PlannedToursPage> {
 //           ],
 //         ),
 //       );
+}
+
+Future<void> downloadNewEventDialog(
+  BuildContext context,
+  String id,
+) async {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        scrollable: true,
+        contentPadding: const EdgeInsets.symmetric(vertical: 16),
+        actionsPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+        ).copyWith(bottom: 18, top: 8),
+        elevation: 2,
+        backgroundColor: AppColors.kWhite,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            12,
+          ),
+        ),
+        content: const Center(
+          child: Text(
+            'Вы уверены что хотите удалить данную поездку?',
+            textAlign: TextAlign.center,
+            style: AppTextStyles.os18w500,
+          ),
+        ),
+        actions: <Widget>[
+          Row(
+            children: [
+              Expanded(
+                child: CommonButton(
+                  onPressed: () => context.router.pop(),
+                  miniButton: true,
+                  borderColor: AppColors.kMainGreen,
+                  backgroundColor: Colors.transparent,
+                  child: const Text(
+                    'Нет',
+                    style: AppTextStyles.os13w500,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 20),
+              Expanded(
+                child: CommonButton(
+                  onPressed: () {
+                    BlocProvider.of<PlanCubit>(context).deletePlan(id: id);
+
+                    context.router.pop(
+                        // (route) => route.settings.name == MainRoute.name,
+                        );
+                  },
+                  miniButton: true,
+                  child: Text(
+                    'Да',
+                    style: AppTextStyles.os13w500.copyWith(
+                      color: AppColors.kWhite,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      );
+    },
+  );
 }

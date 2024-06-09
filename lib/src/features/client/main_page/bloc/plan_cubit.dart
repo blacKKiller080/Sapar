@@ -49,6 +49,29 @@ class PlanCubit extends Cubit<PlanState> {
     );
   }
 
+  Future<void> deletePlan({
+    required String id,
+  }) async {
+    emit(const PlanState.loadingState());
+    final result = await _authRepository.deletePlan(id: id);
+
+    result.when(
+      success: (response) {
+        emit(PlanState.loadedState(statusCode: response));
+        log('deleted plan from cubit');
+      },
+      failure: (e) {
+        e.maybeWhen(
+          orElse: () {
+            emit(
+              PlanState.errorState(message: '$_tag - ${e.msg}'),
+            );
+          },
+        );
+      },
+    );
+  }
+
   Future<void> getPlans() async {
     emit(const PlanState.loadingState());
     final result = await _authRepository.getPlans();

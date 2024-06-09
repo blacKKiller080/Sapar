@@ -74,6 +74,7 @@ class _PlanDialogState extends State<PlanDialog> {
               context,
               'Вы успешно запланировали поездку в ${widget.placeDTO.name}',
             );
+            BlocProvider.of<PlanCubit>(context).getPlans();
           },
           errorState: (message) {
             buildErrorCustomSnackBar(

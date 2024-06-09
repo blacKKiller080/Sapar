@@ -54,6 +54,10 @@ abstract class IAuthRepository {
 
   Future<Result<List<PlanDTO>>> getPlans();
 
+  Future<Result<int>> deletePlan({
+    required String id,
+  });
+
   Future<Result<int>> createPlan({
     required int amount,
     required int placeId,

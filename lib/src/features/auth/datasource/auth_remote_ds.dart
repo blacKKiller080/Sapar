@@ -55,6 +55,10 @@ abstract class IAuthRemoteDS {
 
   Future<Result<List<PlanDTO>>> getPlans();
 
+  Future<Result<int>> deletePlan({
+    required String id,
+  });
+
   Future<Result<int>> createPlan({
     required int amount,
     required int placeId,
@@ -424,6 +428,32 @@ class AuthRemoteDSImpl implements IAuthRemoteDS {
     } catch (e) {
       if (kDebugMode) {
         l.d('createPlan remote=> ${NetworkException.type(error: e.toString())}');
+      }
+
+      return Result<int>.failure(
+        NetworkException.type(error: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Result<int>> deletePlan({
+    required String id,
+  }) async {
+    try {
+      final Result<Map> result = await client.produce(
+        route: AuthApi.deletePlan(id: id),
+      );
+      return result.when(
+        success: (response) {
+          log('$response');
+          return Result<int>.success(response['affected'] as int);
+        },
+        failure: (NetworkException exception) => Result<int>.failure(exception),
+      );
+    } catch (e) {
+      if (kDebugMode) {
+        l.d('deletePlan remote=> ${NetworkException.type(error: e.toString())}');
       }
 
       return Result<int>.failure(

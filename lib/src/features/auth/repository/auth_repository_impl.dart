@@ -139,6 +139,12 @@ class AuthRepositoryImpl extends IAuthRepository {
   Future<Result<List<PlanDTO>>> getPlans() async => await _remoteDS.getPlans();
 
   @override
+  Future<Result<int>> deletePlan({
+    required String id,
+  }) async =>
+      await _remoteDS.deletePlan(id: id);
+
+  @override
   Future<Result<int>> createPlan({
     required int amount,
     required int placeId,

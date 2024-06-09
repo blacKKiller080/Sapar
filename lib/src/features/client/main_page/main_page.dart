@@ -162,7 +162,7 @@ class _MainPageState extends State<MainPage> {
                                     children: [
                                       const Icon(
                                         Icons.grid_view_rounded,
-                                        color: AppColors.kMainGreen,
+                                        color: AppColors.kWhite,
                                         size: 40,
                                       ),
                                       Container(
@@ -184,8 +184,7 @@ class _MainPageState extends State<MainPage> {
                                   Row(
                                     children: [
                                       Text(
-                                        context.repository.authRepository.user!
-                                            .name,
+                                        'Привет, ${context.repository.authRepository.user!.name}',
                                         style: AppTextStyles.os20w500,
                                       ),
                                       Padding(
